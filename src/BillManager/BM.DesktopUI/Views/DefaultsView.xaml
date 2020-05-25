@@ -88,10 +88,10 @@
         </StackPanel>
 
         <!--  Row 5  -->
-        <Button x:Name="SubmitForm"
+        <Button x:Name="UpdateForm"
             Grid.Row="5"
             Margin="5,5,5,10"
-            Click="SubmitForm_Click"
-            Content="Submit" />
+            Click="UpdateForm_Click"
+            Content="Update" />
     </Grid>
 </UserControl>
