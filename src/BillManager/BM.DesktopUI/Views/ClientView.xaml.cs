@@ -1,5 +1,8 @@
-﻿using System;
+﻿using BM.Library.DataAccess;
+using BM.Library.Models;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +23,32 @@ namespace BM.DesktopUI.Views
     /// </summary>
     public partial class ClientView : UserControl
     {
+        private ClientData _clientData { get; set; } = new ClientData();
+        private ObservableCollection<ClientModel> _clients { get; set; }
+
+
         public ClientView()
         {
             InitializeComponent();
+
+            GetInitialClients();
+            InitializeClientDropDown();
+        }
+
+        private void GetInitialClients()
+        {
+            var getClients = _clientData.GetClients();
+            _clients = new ObservableCollection<ClientModel>(getClients);
+        }
+
+        private void InitializeClientDropDown()
+        {
+            ClientDropDown.ItemsSource = _clients;
+            //ClientDropDown.DisplayMemberPath = "Name";
+            //ClientDropDown.SelectedValuePath = "Id";
+            ClientDropDown.SelectedItem = _clients.FirstOrDefault();
+
+            //var id = ClientDropDown.SelectedValue;
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)

@@ -42,7 +42,9 @@
                 <TextBlock Text="Client" />
 
                 <ComboBox x:Name="ClientDropDown"
-                    Width="150" />
+                    Width="150"
+                    DisplayMemberPath="Name"
+                    SelectedValuePath="Id" />
             </StackPanel>
 
             <Button x:Name="EditButton"
