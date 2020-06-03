@@ -23,8 +23,8 @@ namespace BM.DesktopUI.Views
     /// </summary>
     public partial class ClientView : UserControl
     {
-        private ClientData _clientData { get; set; } = new ClientData();
-        private ObservableCollection<ClientModel> _clients { get; set; }
+        private ClientData ClientData { get; set; } = new ClientData();
+        private ObservableCollection<ClientModel> Clients { get; set; }
 
 
         public ClientView()
@@ -37,28 +37,28 @@ namespace BM.DesktopUI.Views
 
         private void GetInitialClients()
         {
-            var getClients = _clientData.GetClients();
-            _clients = new ObservableCollection<ClientModel>(getClients);
+            var getClients = ClientData.GetClients();
+            Clients = new ObservableCollection<ClientModel>(getClients);
         }
 
         private void InitializeClientDropDown()
         {
-            ClientDropDown.ItemsSource = _clients;
+            ClientDropDown.ItemsSource = Clients;
             //ClientDropDown.DisplayMemberPath = "Name";
             //ClientDropDown.SelectedValuePath = "Id";
-            ClientDropDown.SelectedItem = _clients.FirstOrDefault();
+            ClientDropDown.SelectedItem = Clients.FirstOrDefault();
 
             //var id = ClientDropDown.SelectedValue;
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-
+            ActivateView.Content = new ClientEditView();
         }
 
         private void NewButton_Click(object sender, RoutedEventArgs e)
         {
-
+            ActivateView.Content = new ClientNewEntryView();
         }
 
         private void SubmitForm_Click(object sender, RoutedEventArgs e)
@@ -67,7 +67,7 @@ namespace BM.DesktopUI.Views
         }
         private void ClearForm_Click(object sender, RoutedEventArgs e)
         {
-
+            ActivateView.Content = null;
         }
     }
 }

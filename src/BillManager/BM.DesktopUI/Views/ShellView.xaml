@@ -1,12 +1,13 @@
-﻿<Window x:Class="BM.DesktopUI.MainWindow"
+﻿<Window x:Class="BM.DesktopUI.Views.ShellView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:BM.DesktopUI"
+    xmlns:local="clr-namespace:BM.DesktopUI.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="MainWindow"
+    xmlns:s="https://github.com/canton7/Stylet"
+    Title="Bill Manager"
     Width="800"
-    Height="550"
+    Height="450"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Grid>
@@ -21,21 +22,9 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <TabControl x:Name="TabViewer"
+        <TabControl
             Grid.Row="1"
             Grid.Column="1"
-            SelectionChanged="TabViewer_SelectionChanged"
-            TabStripPlacement="Top">
-            <TabItem x:Name="MainTab"
-                Header="Main" />
-            <TabItem x:Name="ClientTab"
-                Header="Client" />
-            <TabItem x:Name="PaymentTab"
-                Header="Payment" />
-            <TabItem x:Name="WorkTab"
-                Header="Work" />
-            <TabItem x:Name="DefaultsTab"
-                Header="Defaults" />
-        </TabControl>
+            Style="{StaticResource StyletConductorTabControl}" />
     </Grid>
 </Window>
