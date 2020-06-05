@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BM.Library.DataAccess
 {
-    public class ClientData
+    public class ClientData : IClientData
     {
         private const string _connectionString = "DefaultConnection";
 
