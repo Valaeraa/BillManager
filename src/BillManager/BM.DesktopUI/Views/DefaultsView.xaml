@@ -63,14 +63,12 @@
                 Margin="0,0,10,0"
                 Orientation="Vertical">
                 <TextBlock Text="Cut Off Number" />
-                <TextBox x:Name="CutOffTextbox"
-                    Text="{Binding CutOff, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBox Text="{Binding CutOff, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
 
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="Minimum Hours" />
-                <TextBox x:Name="MinimumHoursTextbox"
-                    Text="{Binding MinimumHours, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBox Text="{Binding MinimumHours, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
         </StackPanel>
 
@@ -84,14 +82,12 @@
                 Margin="0,0,10,0"
                 Orientation="Vertical">
                 <TextBlock Text="Billing Increment" />
-                <TextBox x:Name="BillingIncrementTextbox"
-                    Text="{Binding BillingIncrement, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBox Text="{Binding BillingIncrement, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
 
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="Round Up (min.)" />
-                <TextBox x:Name="RoundUpAfterXMinuteTextbox"
-                    Text="{Binding RoundUpAfterXMinutes, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBox Text="{Binding RoundUpAfterXMinutes, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
         </StackPanel>
 
