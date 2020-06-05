@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace BM.DesktopUI.Views
 {
     /// <summary>
-    /// Interaction logic for ClientNewEntryView.xaml
+    /// Interaction logic for ClientEditView.xaml
     /// </summary>
-    public partial class ClientNewEntryView : UserControl
+    public partial class EditClientView : UserControl
     {
-        public ClientNewEntryView()
+        public EditClientView()
         {
             InitializeComponent();
         }

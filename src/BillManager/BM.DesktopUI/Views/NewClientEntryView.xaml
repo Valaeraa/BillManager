@@ -1,9 +1,10 @@
-﻿<UserControl x:Class="BM.DesktopUI.Views.ClientEditView"
+﻿<UserControl x:Class="BM.DesktopUI.Views.NewClientEntryView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:BM.DesktopUI.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:s="https://github.com/canton7/Stylet"
     d:DesignHeight="450"
     d:DesignWidth="800"
     Background="White"
@@ -47,7 +48,7 @@
 
             <TextBlock Text="Hourly Rate" />
 
-            <TextBox x:Name="HourlyRateTextbox" />
+            <TextBox Text="{Binding HourlyRate, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
 
         <StackPanel x:Name="PreBillStackPanel"
@@ -55,12 +56,16 @@
             Margin="5,5,5,10"
             Orientation="Horizontal">
 
-            <CheckBox x:Name="PreBillCheckbox"
+            <CheckBox
+                Height="23"
                 Margin="0,0,10,0"
-                Content="Pre-bill Client" />
+                VerticalAlignment="Top"
+                Content="Pre-bill Client"
+                IsChecked="{Binding PreBill, UpdateSourceTrigger=PropertyChanged}" />
 
-            <CheckBox x:Name="HasCutOffCheckbox"
-                Content="Cut Off Client" />
+            <CheckBox
+                Content="Cut Off Client"
+                IsChecked="{Binding HasCutOff, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
 
         <StackPanel x:Name="CheckboxesStackPanel"
@@ -72,12 +77,12 @@
                 Margin="0,0,10,0"
                 Orientation="Vertical">
                 <TextBlock Text="Cut Off Number" />
-                <TextBox x:Name="CutOffTextbox" />
+                <TextBox Text="{Binding CutOff, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
 
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="Minimum Hours" />
-                <TextBox x:Name="MinimumHoursTextbox" />
+                <TextBox Text="{Binding MinimumHours, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
         </StackPanel>
 
@@ -90,12 +95,12 @@
                 Margin="0,0,10,0"
                 Orientation="Vertical">
                 <TextBlock Text="Billing Increment" />
-                <TextBox x:Name="BillingIncrementTextbox" />
+                <TextBox Text="{Binding BillingIncrement, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
 
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="Round Up (min.)" />
-                <TextBox x:Name="RoundUpAfterXMinuteTextbox" />
+                <TextBox Text="{Binding RoundUpAfterXMinutes, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
         </StackPanel>
 
@@ -104,15 +109,17 @@
             Margin="5,5,5,10"
             HorizontalAlignment="Center"
             Orientation="Horizontal">
-            <Button x:Name="SubmitForm"
+            <Button
                 Margin="0,0,5,0"
                 Padding="5,0"
+                Command="{s:Action Submit}"
                 Content="Submit" />
 
-            <Button x:Name="ClearForm"
+            <Button
                 Margin="5,0,0,0"
                 Padding="5,0"
-                Content="Clear" />
+                Command="{s:Action Cancel}"
+                Content="Cancel" />
         </StackPanel>
     </Grid>
 </UserControl>
