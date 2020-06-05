@@ -17,6 +17,7 @@ namespace BM.DesktopUI
             base.ConfigureIoC(builder);
 
             builder.Bind<IDefaultsData>().To<DefaultsData>();
+            builder.Bind<IClientData>().To<ClientData>();
         }
     }
 }

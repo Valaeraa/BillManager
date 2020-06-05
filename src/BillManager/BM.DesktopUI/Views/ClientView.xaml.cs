@@ -23,51 +23,44 @@ namespace BM.DesktopUI.Views
     /// </summary>
     public partial class ClientView : UserControl
     {
-        private ClientData ClientData { get; set; } = new ClientData();
-        private ObservableCollection<ClientModel> Clients { get; set; }
-
-
         public ClientView()
         {
             InitializeComponent();
-
-            GetInitialClients();
-            InitializeClientDropDown();
         }
 
-        private void GetInitialClients()
-        {
-            var getClients = ClientData.GetClients();
-            Clients = new ObservableCollection<ClientModel>(getClients);
-        }
+        //private void GetInitialClients()
+        //{
+        //    var getClients = ClientData.GetClients();
+        //    Clients = new ObservableCollection<ClientModel>(getClients);
+        //}
 
-        private void InitializeClientDropDown()
-        {
-            ClientDropDown.ItemsSource = Clients;
-            //ClientDropDown.DisplayMemberPath = "Name";
-            //ClientDropDown.SelectedValuePath = "Id";
-            ClientDropDown.SelectedItem = Clients.FirstOrDefault();
+        //private void InitializeClientDropDown()
+        //{
+        //    ClientDropDown.ItemsSource = Clients;
+        //    //ClientDropDown.DisplayMemberPath = "Name";
+        //    //ClientDropDown.SelectedValuePath = "Id";
+        //    ClientDropDown.SelectedItem = Clients.FirstOrDefault();
 
-            //var id = ClientDropDown.SelectedValue;
-        }
+        //    //var id = ClientDropDown.SelectedValue;
+        //}
 
-        private void EditButton_Click(object sender, RoutedEventArgs e)
-        {
-            ActivateView.Content = new ClientEditView();
-        }
+        //private void EditButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    ActivateView.Content = new ClientEditView();
+        //}
 
-        private void NewButton_Click(object sender, RoutedEventArgs e)
-        {
-            ActivateView.Content = new ClientNewEntryView();
-        }
+        //private void NewButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    ActivateView.Content = new ClientNewEntryView();
+        //}
 
-        private void SubmitForm_Click(object sender, RoutedEventArgs e)
-        {
+        //private void SubmitForm_Click(object sender, RoutedEventArgs e)
+        //{
 
-        }
-        private void ClearForm_Click(object sender, RoutedEventArgs e)
-        {
-            ActivateView.Content = null;
-        }
+        //}
+        //private void ClearForm_Click(object sender, RoutedEventArgs e)
+        //{
+        //    ActivateView.Content = null;
+        //}
     }
 }

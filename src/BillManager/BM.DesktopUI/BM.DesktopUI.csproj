@@ -66,19 +66,20 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Bootstrapper.cs" />
-    <Compile Include="ViewModels\ClientEditViewModel.cs" />
-    <Compile Include="ViewModels\ClientNewEntryViewModel.cs" />
+    <Compile Include="Events\SelectedClientEvent.cs" />
+    <Compile Include="ViewModels\EditClientViewModel.cs" />
+    <Compile Include="ViewModels\NewClientEntryViewModel.cs" />
     <Compile Include="ViewModels\ClientViewModel.cs" />
     <Compile Include="ViewModels\DefaultsViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\PaymentViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\WorkViewModel.cs" />
-    <Compile Include="Views\ClientEditView.xaml.cs">
-      <DependentUpon>ClientEditView.xaml</DependentUpon>
+    <Compile Include="Views\EditClientView.xaml.cs">
+      <DependentUpon>EditClientView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ClientNewEntryView.xaml.cs">
-      <DependentUpon>ClientNewEntryView.xaml</DependentUpon>
+    <Compile Include="Views\NewClientEntryView.xaml.cs">
+      <DependentUpon>NewClientEntryView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ClientView.xaml.cs">
       <DependentUpon>ClientView.xaml</DependentUpon>
@@ -102,11 +103,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\ClientEditView.xaml">
+    <Page Include="Views\EditClientView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ClientNewEntryView.xaml">
+    <Page Include="Views\NewClientEntryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
