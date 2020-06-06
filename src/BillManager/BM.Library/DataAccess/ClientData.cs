@@ -21,5 +21,14 @@ namespace BM.Library.DataAccess
 
             return output;
         }
+
+        public void InsertClientData(ClientModel model)
+        {
+            var sqlString = "insert into Client (Name, HourlyRate, Email, PreBill, HasCutOff, CutOff, MinimumHours, BillingIncrement, RoundUpAfterXMinutes)" +
+                "values (@Name, @HourlyRate, @Email, @PreBill, @HasCutOff, @CutOff, @MinimumHours, @BillingIncrement, @RoundUpAfterXMinutes)";
+
+            var sql = new SqlDataAccess();
+            sql.SaveData(sqlString, model, _connectionString);
+        }
     }
 }

@@ -6,5 +6,6 @@ namespace BM.Library.DataAccess
     public interface IClientData
     {
         List<ClientModel> GetClients();
+        void InsertClientData(ClientModel model);
     }
 }
