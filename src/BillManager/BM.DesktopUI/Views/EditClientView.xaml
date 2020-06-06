@@ -28,7 +28,7 @@
 
             <TextBlock Text="Name" />
 
-            <TextBox x:Name="NameTextbox" />
+            <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
 
         <StackPanel x:Name="EmailStackPanel"
@@ -38,7 +38,7 @@
 
             <TextBlock Text="Email Address" />
 
-            <TextBox x:Name="EmailTextbox" />
+            <TextBox Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
 
         <StackPanel x:Name="HourlyRateStackPanel"
@@ -48,7 +48,7 @@
 
             <TextBlock Text="Hourly Rate" />
 
-            <TextBox x:Name="HourlyRateTextbox" />
+            <TextBox Text="{Binding HourlyRate, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
 
         <StackPanel x:Name="PreBillStackPanel"
@@ -56,12 +56,14 @@
             Margin="5,5,5,10"
             Orientation="Horizontal">
 
-            <CheckBox x:Name="PreBillCheckbox"
+            <CheckBox
                 Margin="0,0,10,0"
-                Content="Pre-bill Client" />
+                Content="Pre-bill Client"
+                IsChecked="{Binding PreBill, UpdateSourceTrigger=PropertyChanged}" />
 
-            <CheckBox x:Name="HasCutOffCheckbox"
-                Content="Cut Off Client" />
+            <CheckBox
+                Content="Cut Off Client"
+                IsChecked="{Binding HasCutOff, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
 
         <StackPanel x:Name="CheckboxesStackPanel"
@@ -73,12 +75,12 @@
                 Margin="0,0,10,0"
                 Orientation="Vertical">
                 <TextBlock Text="Cut Off Number" />
-                <TextBox x:Name="CutOffTextbox" />
+                <TextBox Text="{Binding CutOff, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
 
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="Minimum Hours" />
-                <TextBox x:Name="MinimumHoursTextbox" />
+                <TextBox Text="{Binding MinimumHours, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
         </StackPanel>
 
@@ -91,12 +93,12 @@
                 Margin="0,0,10,0"
                 Orientation="Vertical">
                 <TextBlock Text="Billing Increment" />
-                <TextBox x:Name="BillingIncrementTextbox" />
+                <TextBox Text="{Binding BillingIncrement, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
 
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="Round Up (min.)" />
-                <TextBox x:Name="RoundUpAfterXMinuteTextbox" />
+                <TextBox Text="{Binding RoundUpAfterXMinutes, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
         </StackPanel>
 
