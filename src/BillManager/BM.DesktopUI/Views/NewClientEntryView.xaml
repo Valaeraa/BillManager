@@ -28,7 +28,7 @@
 
             <TextBlock Text="Name" />
 
-            <TextBox x:Name="NameTextbox" />
+            <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
 
         <StackPanel x:Name="EmailStackPanel"
@@ -38,7 +38,7 @@
 
             <TextBlock Text="Email Address" />
 
-            <TextBox x:Name="EmailTextbox" />
+            <TextBox Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
 
         <StackPanel x:Name="HourlyRateStackPanel"
@@ -112,8 +112,8 @@
             <Button
                 Margin="0,0,5,0"
                 Padding="5,0"
-                Command="{s:Action Submit}"
-                Content="Submit" />
+                Command="{s:Action Add}"
+                Content="Add" />
 
             <Button
                 Margin="5,0,0,0"
