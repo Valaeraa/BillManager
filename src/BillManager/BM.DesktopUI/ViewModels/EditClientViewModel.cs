@@ -1,4 +1,5 @@
 ﻿using BM.DesktopUI.Events;
+using BM.Library.Models;
 using Stylet;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,14 @@ namespace BM.DesktopUI.ViewModels
 {
     public class EditClientViewModel : Screen, IHandle<SelectedClientEvent>
     {
-        public EditClientViewModel()
+        private readonly IEventAggregator _eventAggregator;
+
+        public EditClientViewModel(IEventAggregator eventAggregator)
         {
             DisplayName = "Edit";
+
+            _eventAggregator = eventAggregator;
+            _eventAggregator.Subscribe(this);
         }
 
         private int _id;
@@ -69,9 +75,9 @@ namespace BM.DesktopUI.ViewModels
             }
         }
 
-        private string _cutOff;
+        private int _cutOff;
 
-        public string CutOff
+        public int CutOff
         {
             get { return _cutOff; }
             set
@@ -80,9 +86,9 @@ namespace BM.DesktopUI.ViewModels
             }
         }
 
-        private string _minimumHours;
+        private double _minimumHours;
 
-        public string MinimumHours
+        public double MinimumHours
         {
             get { return _minimumHours; }
             set
@@ -91,9 +97,9 @@ namespace BM.DesktopUI.ViewModels
             }
         }
 
-        private string _billingIncrement;
+        private double _billingIncrement;
 
-        public string BillingIncrement
+        public double BillingIncrement
         {
             get { return _billingIncrement; }
             set
@@ -102,15 +108,35 @@ namespace BM.DesktopUI.ViewModels
             }
         }
 
-        private string _roundUpAfterXMinutes;
+        private int _roundUpAfterXMinutes;
 
-        public string RoundUpAfterXMinutes
+        public int RoundUpAfterXMinutes
         {
             get { return _roundUpAfterXMinutes; }
             set
             {
                 SetAndNotify(ref _roundUpAfterXMinutes, value);
             }
+        }
+
+        private void LoadSelectedClient(SelectedClientEvent message)
+        {
+            Name = message.SelectedClient.Name;
+            Email = message.SelectedClient.Email;
+            HourlyRate = message.SelectedClient.HourlyRate;
+            PreBill = (message.SelectedClient.PreBill > 0);
+            HasCutOff = (message.SelectedClient.HasCutOff > 0);
+            CutOff = message.SelectedClient.CutOff;
+            MinimumHours = message.SelectedClient.MinimumHours;
+            BillingIncrement = message.SelectedClient.BillingIncrement;
+            RoundUpAfterXMinutes = message.SelectedClient.RoundUpAfterXMinutes;
+        }
+
+        public bool CanUpdate { get { return true; } }
+
+        public void Update()
+        {
+
         }
 
         public void Cancel()
@@ -120,7 +146,7 @@ namespace BM.DesktopUI.ViewModels
 
         public void Handle(SelectedClientEvent message)
         {
-            throw new NotImplementedException();
+            LoadSelectedClient(message);
         }
     }
 }
