@@ -15,7 +15,7 @@ namespace BM.Library.DataAccess
         public List<ClientModel> GetClients()
         {
             var sql = new SqlDataAccess();
-            var sqlString = "select * from Client";
+            var sqlString = "select * from Client order by Name";
 
             var output = sql.LoadData<ClientModel, dynamic>(sqlString, new { }, _connectionString);
 
