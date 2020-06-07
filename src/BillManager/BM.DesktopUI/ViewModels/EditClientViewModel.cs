@@ -121,6 +121,7 @@ namespace BM.DesktopUI.ViewModels
 
         private void LoadSelectedClient(SelectedClientEvent message)
         {
+            Id = message.SelectedClient.Id;
             Name = message.SelectedClient.Name;
             Email = message.SelectedClient.Email;
             HourlyRate = message.SelectedClient.HourlyRate;
