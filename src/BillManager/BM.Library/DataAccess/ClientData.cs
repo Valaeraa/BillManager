@@ -14,9 +14,9 @@ namespace BM.Library.DataAccess
 
         public List<ClientModel> GetClients()
         {
-            var sql = new SqlDataAccess();
             var sqlString = "select * from Client order by Name";
 
+            var sql = new SqlDataAccess();
             var output = sql.LoadData<ClientModel, dynamic>(sqlString, new { }, _connectionString);
 
             return output;
@@ -26,6 +26,16 @@ namespace BM.Library.DataAccess
         {
             var sqlString = "insert into Client (Name, HourlyRate, Email, PreBill, HasCutOff, CutOff, MinimumHours, BillingIncrement, RoundUpAfterXMinutes)" +
                 "values (@Name, @HourlyRate, @Email, @PreBill, @HasCutOff, @CutOff, @MinimumHours, @BillingIncrement, @RoundUpAfterXMinutes)";
+
+            var sql = new SqlDataAccess();
+            sql.SaveData(sqlString, model, _connectionString);
+        }
+
+        public void UpdateClientData(ClientModel model)
+        {
+            var sqlString = "update Client set Name = @Name, HourlyRate = @HourlyRate, Email = @Email, PreBill = @PreBill, " +
+                "HasCutOff = @HasCutOff, CutOff = @CutOff, MinimumHours = @MinimumHours, BillingIncrement = @BillingIncrement, " +
+                "RoundUpAfterXMinutes = @RoundUpAfterXMinutes where Id = @Id";
 
             var sql = new SqlDataAccess();
             sql.SaveData(sqlString, model, _connectionString);

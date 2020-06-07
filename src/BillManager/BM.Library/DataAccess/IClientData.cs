@@ -7,5 +7,6 @@ namespace BM.Library.DataAccess
     {
         List<ClientModel> GetClients();
         void InsertClientData(ClientModel model);
+        void UpdateClientData(ClientModel model);
     }
 }
