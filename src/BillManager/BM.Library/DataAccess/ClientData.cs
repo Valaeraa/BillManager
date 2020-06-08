@@ -33,9 +33,9 @@ namespace BM.Library.DataAccess
 
         public void UpdateClientData(ClientModel model)
         {
-            var sqlString = "update Client set Name = @Name, HourlyRate = @HourlyRate, Email = @Email, PreBill = @PreBill, " +
-                "HasCutOff = @HasCutOff, CutOff = @CutOff, MinimumHours = @MinimumHours, BillingIncrement = @BillingIncrement, " +
-                "RoundUpAfterXMinutes = @RoundUpAfterXMinutes where Id = @Id";
+            var sqlString = "update Client set Name = @Name, HourlyRate = @HourlyRate, Email = @Email, PreBill = @PreBill, HasCutOff = @HasCutOff, " +
+                "CutOff = @CutOff, MinimumHours = @MinimumHours, BillingIncrement = @BillingIncrement, RoundUpAfterXMinutes = @RoundUpAfterXMinutes " +
+                "where Id = @Id";
 
             var sql = new SqlDataAccess();
             sql.SaveData(sqlString, model, _connectionString);
