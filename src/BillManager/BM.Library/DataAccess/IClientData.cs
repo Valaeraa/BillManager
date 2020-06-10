@@ -6,7 +6,7 @@ namespace BM.Library.DataAccess
     public interface IClientData
     {
         List<ClientModel> GetClients();
-        void InsertClientData(ClientModel model);
-        void UpdateClientData(ClientModel model);
+        void InsertClientData(ClientModel parameters);
+        void UpdateClientData(ClientModel parameters);
     }
 }

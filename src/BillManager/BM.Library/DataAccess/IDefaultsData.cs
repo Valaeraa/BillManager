@@ -6,6 +6,6 @@ namespace BM.Library.DataAccess
     {
         void DeleteDefaultsData();
         DefaultsModel GetDefaultsData();
-        void InsertDefaultsData(DefaultsModel model);
+        void InsertDefaultsData(DefaultsModel parameters);
     }
 }

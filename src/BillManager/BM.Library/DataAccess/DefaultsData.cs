@@ -23,14 +23,14 @@ namespace BM.Library.DataAccess
             return output;
         }
 
-        public void InsertDefaultsData(DefaultsModel model)
+        public void InsertDefaultsData(DefaultsModel parameters)
         {
             var sqlString = "insert into Defaults (HourlyRate, PreBill, HasCutOff, CutOff, MinimumHours, BillingIncrement, RoundUpAfterXMinutes) " +
                 "values (@HourlyRate, @PreBill, @HasCutOff, @CutOff, @MinimumHours, @BillingIncrement, @RoundUpAfterXMinutes)";
 
             var sql = new SqlDataAccess();
 
-            sql.SaveData(sqlString, model, _connectionString);
+            sql.SaveData(sqlString, parameters, _connectionString);
 
         }
 
