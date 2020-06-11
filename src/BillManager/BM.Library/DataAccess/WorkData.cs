@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BM.Library.DataAccess
 {
-    public class WorkData
+    public class WorkData : IWorkData
     {
         private const string _connectionString = "DefaultConnection";
 
@@ -20,6 +20,15 @@ namespace BM.Library.DataAccess
             var output = sql.LoadData<WorkModel, dynamic>(sqlString, new { }, _connectionString);
 
             return output;
+        }
+
+        public void InsertWorkData(WorkModel parameters)
+        {
+            string sqlString = "insert into Work (ClientId, Hours, Title, Description) " +
+                "values (@ClientId, @Hours, @Title, @Description)";
+
+            var sql = new SqlDataAccess();
+            sql.SaveData(sqlString, parameters, _connectionString);
         }
 
         public void UpdateWorkData(WorkModel parameters)

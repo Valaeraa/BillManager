@@ -57,6 +57,7 @@
     <Compile Include="DataAccess\IClientData.cs" />
     <Compile Include="DataAccess\IDefaultsData.cs" />
     <Compile Include="DataAccess\IPaymentData.cs" />
+    <Compile Include="DataAccess\IWorkData.cs" />
     <Compile Include="DataAccess\PaymentData.cs" />
     <Compile Include="DataAccess\WorkData.cs" />
     <Compile Include="Internal\DataAccess\SqlDataAccess.cs" />
