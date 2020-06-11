@@ -18,6 +18,8 @@ namespace BM.DesktopUI
 
             builder.Bind<IDefaultsData>().To<DefaultsData>();
             builder.Bind<IClientData>().To<ClientData>();
+            builder.Bind<IPaymentData>().To<PaymentData>();
+            builder.Bind<IWorkData>().To<WorkData>();
         }
     }
 }
