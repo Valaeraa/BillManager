@@ -58,10 +58,12 @@
     <Compile Include="DataAccess\IDefaultsData.cs" />
     <Compile Include="DataAccess\IPaymentData.cs" />
     <Compile Include="DataAccess\PaymentData.cs" />
+    <Compile Include="DataAccess\WorkData.cs" />
     <Compile Include="Internal\DataAccess\SqlDataAccess.cs" />
     <Compile Include="Models\ClientModel.cs" />
     <Compile Include="Models\DefaultsModel.cs" />
     <Compile Include="Models\PaymentModel.cs" />
+    <Compile Include="Models\WorkModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
