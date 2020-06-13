@@ -14,13 +14,6 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
@@ -29,16 +22,18 @@
             Grid.Row="0"
             HorizontalAlignment="Center"
             FontSize="28"
-            Text="Clients" />
+            Text="Clients"
+            Visibility="{Binding Title, FallbackValue=Clients}" />
 
         <!--  Row 1  -->
+
         <StackPanel
             Grid.Row="1"
             Margin="5,5,5,10"
-            Orientation="Horizontal">
+            Orientation="Horizontal"
+            Visibility="{Binding ClientStackPanel}">
 
-            <StackPanel x:Name="ClientStackPanel"
-                Orientation="Vertical">
+            <StackPanel Orientation="Vertical">
 
                 <TextBlock Text="Client" />
 
@@ -66,122 +61,106 @@
         </StackPanel>
 
         <!--  Row 2  -->
-        <ContentControl
+
+        <StackPanel
             Grid.Row="2"
-            s:View.Model="{Binding ActiveItem}" />
-        <!--<StackPanel x:Name="NameStackPanel"
-            Grid.Row="2"
-            Margin="5,5,5,10"
-            Orientation="Vertical">
+            Visibility="{Binding FormStackPanel}">
+            <StackPanel
+                Margin="5,5,5,10"
+                Orientation="Vertical">
 
-            <TextBlock Text="Name" />
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    FontSize="24"
+                    Text="{Binding FormTitle, FallbackValue=New Client}" />
+                <TextBlock Text="Name" />
 
-            <TextBox x:Name="NameTextbox" />
-        </StackPanel>
-
-        -->
-        <!--  Row 3  -->
-        <!--
-        <StackPanel x:Name="EmailStackPanel"
-            Grid.Row="3"
-            Margin="5,5,5,10"
-            Orientation="Vertical">
-
-            <TextBlock Text="Email Address" />
-
-            <TextBox x:Name="EmailTextbox" />
-        </StackPanel>
-
-        -->
-        <!--  Row 4  -->
-        <!--
-        <StackPanel x:Name="HourlyRateStackPanel"
-            Grid.Row="4"
-            Margin="5,5,5,10"
-            Orientation="Vertical">
-
-            <TextBlock Text="Hourly Rate" />
-
-            <TextBox x:Name="HourlyRateTextbox" />
-        </StackPanel>
-
-        -->
-        <!--  Row 5  -->
-        <!--
-        <StackPanel x:Name="PreBillStackPanel"
-            Grid.Row="5"
-            Margin="5,5,5,10"
-            Orientation="Horizontal">
-
-            <CheckBox x:Name="PreBillCheckbox"
-                Margin="0,0,10,0"
-                Content="Pre-bill Client" />
-
-            <CheckBox x:Name="HasCutOffCheckbox"
-                Content="Cut Off Client" />
-        </StackPanel>
-
-        -->
-        <!--  Row 6  -->
-        <!--
-        <StackPanel x:Name="CheckboxesStackPanel"
-            Grid.Row="6"
-            Margin="5,5,5,10"
-            Orientation="Horizontal">
+                <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
 
             <StackPanel
-                Margin="0,0,10,0"
+                Margin="5,5,5,10"
                 Orientation="Vertical">
-                <TextBlock Text="Cut Off Number" />
-                <TextBox x:Name="CutOffTextbox" />
-            </StackPanel>
 
-            <StackPanel Orientation="Vertical">
-                <TextBlock Text="Minimum Hours" />
-                <TextBox x:Name="MinimumHoursTextbox" />
-            </StackPanel>
-        </StackPanel>
+                <TextBlock Text="Email Address" />
 
-        -->
-        <!--  Row 7  -->
-        <!--
-        <StackPanel x:Name="IncrementsStackPanel"
-            Grid.Row="7"
-            Margin="5,5,5,10"
-            Orientation="Horizontal">
+                <TextBox Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
 
             <StackPanel
-                Margin="0,0,10,0"
+                Margin="5,5,5,10"
                 Orientation="Vertical">
-                <TextBlock Text="Billing Increment" />
-                <TextBox x:Name="BillingIncrementTextbox" />
+
+                <TextBlock Text="Hourly Rate" />
+
+                <TextBox Text="{Binding HourlyRate, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
 
-            <StackPanel Orientation="Vertical">
-                <TextBlock Text="Round Up (min.)" />
-                <TextBox x:Name="RoundUpAfterXMinuteTextbox" />
+            <StackPanel
+                Margin="5,5,5,10"
+                Orientation="Horizontal">
+
+                <CheckBox
+                    Margin="0,0,10,0"
+                    Content="Pre-bill Client"
+                    IsChecked="{Binding PreBill, UpdateSourceTrigger=PropertyChanged}" />
+
+                <CheckBox
+                    Content="Cut Off Client"
+                    IsChecked="{Binding HasCutOff, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+
+            <StackPanel
+                Margin="5,5,5,10"
+                Orientation="Horizontal">
+
+                <StackPanel
+                    Margin="0,0,10,0"
+                    Orientation="Vertical">
+                    <TextBlock Text="Cut Off Number" />
+                    <TextBox Text="{Binding CutOff, UpdateSourceTrigger=PropertyChanged}" />
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Minimum Hours" />
+                    <TextBox Text="{Binding MinimumHours, UpdateSourceTrigger=PropertyChanged}" />
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel
+                Margin="5,5,5,10"
+                Orientation="Horizontal">
+
+                <StackPanel
+                    Margin="0,0,10,0"
+                    Orientation="Vertical">
+                    <TextBlock Text="Billing Increment" />
+                    <TextBox Text="{Binding BillingIncrement, UpdateSourceTrigger=PropertyChanged}" />
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Round Up (min.)" />
+                    <TextBox Text="{Binding RoundUpAfterXMinutes, UpdateSourceTrigger=PropertyChanged}" />
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel
+                Margin="5,5,5,10"
+                HorizontalAlignment="Center"
+                Orientation="Horizontal">
+                <Button
+                    MinWidth="50"
+                    Margin="0,0,5,0"
+                    Padding="5,0"
+                    Command="{s:Action Submit}"
+                    Content="{Binding ButtonName}" />
+
+                <Button
+                    Margin="5,0,0,0"
+                    Padding="5,0"
+                    Command="{s:Action Close}"
+                    Content="Close" />
             </StackPanel>
         </StackPanel>
-
-        -->
-        <!--  Row 8  -->
-        <!--
-        <StackPanel x:Name="ButtonStackPanel"
-            Grid.Row="8"
-            Margin="5,5,5,10"
-            HorizontalAlignment="Center"
-            Orientation="Horizontal">
-            <Button x:Name="SubmitForm"
-                Margin="0,0,5,0"
-                Padding="5,0"
-                Click="SubmitForm_Click"
-                Content="Submit" />
-
-            <Button x:Name="ClearForm"
-                Margin="5,0,0,0"
-                Padding="5,0"
-                Click="ClearForm_Click"
-                Content="Clear" />
-        </StackPanel>-->
     </Grid>
 </UserControl>
