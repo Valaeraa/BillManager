@@ -31,13 +31,13 @@ namespace BM.Library.DataAccess
             sql.SaveData(sqlString, parameters, _connectionString);
         }
 
-        public List<PaymentModel> GetPayments()
+        public List<PaymentModel> GetPayments(int clientId)
         {
             var sqlString = "select * from Payment where ClientId = @ClientId";
 
             var sql = new SqlDataAccess();
 
-            var output = sql.LoadData<PaymentModel, dynamic>(sqlString, new { }, _connectionString);
+            var output = sql.LoadData<PaymentModel, dynamic>(sqlString, new { ClientId = clientId }, _connectionString);
 
             return output;
         }

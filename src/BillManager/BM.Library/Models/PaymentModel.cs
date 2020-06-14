@@ -13,6 +13,6 @@ namespace BM.Library.Models
         public double Hours { get; set; }
         public double Amount { get; set; }
         public string Date { get; set; }
-        public string DisplayValue { get { return $"{Date} - {Amount}"; } }
+        public string DisplayValue { get { return $"{Date} - ${Amount}"; } }
     }
 }

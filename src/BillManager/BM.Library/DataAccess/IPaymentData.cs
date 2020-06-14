@@ -5,7 +5,7 @@ namespace BM.Library.DataAccess
 {
     public interface IPaymentData
     {
-        List<PaymentModel> GetPayments();
+        List<PaymentModel> GetPayments(int clientId);
         void InsertPaymentData(PaymentModel parameters);
         void UpdatePaymentData(PaymentModel parameters);
     }
