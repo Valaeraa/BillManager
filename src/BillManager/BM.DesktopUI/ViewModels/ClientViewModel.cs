@@ -18,7 +18,7 @@ namespace BM.DesktopUI.ViewModels
         private readonly IWindowManager _windowManager;
         private readonly IClientData _clientData;
         private readonly IDefaultsData _defaultsData;
-        private bool _isNewClient = false;
+        private bool _isNewEntry = true;
 
         public ClientViewModel(IWindowManager windowManager, IClientData clientData, IDefaultsData defaultsData)
         {
@@ -286,7 +286,7 @@ namespace BM.DesktopUI.ViewModels
                 RoundUpAfterXMinutes = int.Parse(RoundUpAfterXMinutes)
             };
 
-            if (_isNewClient == false)
+            if (_isNewEntry == false)
             {
 
                 output.Id = Id;
@@ -374,7 +374,7 @@ namespace BM.DesktopUI.ViewModels
 
         public void EditClient()
         {
-            _isNewClient = false;
+            _isNewEntry = false;
 
             ClearFields();
             SetFormVisibily(Visibility.Collapsed, Visibility.Visible);
@@ -384,7 +384,7 @@ namespace BM.DesktopUI.ViewModels
 
         public void NewClient()
         {
-            _isNewClient = true;
+            _isNewEntry = true;
 
             ClearFields();
             SetFormVisibily(Visibility.Collapsed, Visibility.Visible);
@@ -396,7 +396,7 @@ namespace BM.DesktopUI.ViewModels
 
         public void Submit()
         {
-            if (_isNewClient == true)
+            if (_isNewEntry == true)
             {
                 // Add a new client
                 var model = PopulateClientModel();
