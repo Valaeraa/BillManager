@@ -4,6 +4,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:BM.DesktopUI.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:s="https://github.com/canton7/Stylet"
     d:DesignHeight="450"
     d:DesignWidth="800"
     Background="White"
@@ -23,6 +24,7 @@
         <!--  Row 0  -->
         <TextBlock
             Grid.Row="0"
+            HorizontalAlignment="Center"
             FontSize="24"
             Text="Payments" />
 
@@ -30,79 +32,97 @@
         <StackPanel
             Grid.Row="1"
             Margin="5,5,5,10"
-            Orientation="Vertical">
+            Orientation="Vertical"
+            Visibility="{Binding ClientStackPanel}">
 
             <TextBlock Text="Client" />
 
-            <ComboBox x:Name="ClientDropDown"
-                SelectionChanged="ClientDropDown_SelectionChanged" />
+            <ComboBox
+                DisplayMemberPath="Name"
+                ItemsSource="{Binding Clients}"
+                SelectedItem="{Binding SelectedClient}"
+                SelectedValuePath="Id"
+                SelectionChanged="{s:Action ClientSelectionChanged}" />
         </StackPanel>
 
         <!--  Row 2  -->
-        <StackPanel x:Name="SelectionStackPanel"
+        <StackPanel
             Grid.Row="2"
             Margin="5,5,5,10"
-            Orientation="Horizontal">
+            Orientation="Horizontal"
+            Visibility="{Binding PaymentStackPanal}">
 
-            <StackPanel x:Name="DateStackPanel"
-                Orientation="Vertical">
+            <StackPanel Orientation="Vertical">
 
                 <TextBlock Text="Date" />
 
-                <ComboBox x:Name="DateDropDown"
+                <ComboBox
                     Width="150"
-                    SelectionChanged="DateDropDown_SelectionChanged" />
+                    DisplayMemberPath="DisplayValue"
+                    ItemsSource="{Binding Payments}"
+                    SelectedItem="{Binding SelectedPayment}"
+                    SelectedValuePath="Id" />
             </StackPanel>
 
-            <TextBlock x:Name="OrTextBlock"
-                Margin="10,0,0,5"
-                VerticalAlignment="Bottom"
-                Text="-Or-" />
-
-            <Button x:Name="NewButton"
+            <Button
                 Margin="10,0,5,0"
                 Padding="5,2"
                 VerticalAlignment="Bottom"
-                Click="NewButton_Click"
+                Command="{s:Action EditPayment}"
+                Content="Edit" />
+
+            <Button
+                Margin="10,0,5,0"
+                Padding="5,2"
+                VerticalAlignment="Bottom"
+                Command="{s:Action NewPayment}"
                 Content="New" />
         </StackPanel>
 
         <!--  Row 3  -->
-        <StackPanel x:Name="AmountStackPanel"
+        <StackPanel
             Grid.Row="3"
             Margin="5,5,5,10"
-            Orientation="Vertical">
-            <TextBlock Text="Amount" />
-            <TextBox x:Name="AmountTextbox" />
-        </StackPanel>
+            Visibility="{Binding FormStackPanal}">
 
-        <!--  Row 4  -->
-        <StackPanel x:Name="HoursStackPanel"
-            Grid.Row="4"
-            Margin="5,5,5,10"
-            Orientation="Vertical">
-            <TextBlock Text="Hours" />
-            <TextBox x:Name="hoursTextbox" />
-        </StackPanel>
+            <TextBlock
+                Margin="5,5,5,0"
+                HorizontalAlignment="Center"
+                Text="{Binding FormTitle, UpdateSourceTrigger=PropertyChanged, FallbackValue=New Payment}" />
 
-        <!--  Row 5  -->
-        <StackPanel x:Name="ButtonStackPanel"
-            Grid.Row="5"
-            Margin="5,5,5,10"
-            HorizontalAlignment="Center"
-            Orientation="Horizontal">
+            <StackPanel
+                Margin="5,5,5,10"
+                Orientation="Vertical">
 
-            <Button x:Name="SubmitForm"
-                Margin="0,0,5,0"
-                Padding="5,0"
-                Click="SubmitForm_Click"
-                Content="Submit" />
+                <TextBlock Text="Amount" />
+                <TextBox Text="{Binding Amount, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
 
-            <Button x:Name="ClearForm"
-                Margin="5,0,0,0"
-                Padding="5,0"
-                Click="ClearForm_Click"
-                Content="Clear" />
+            <StackPanel
+                Margin="5,5,5,10"
+                Orientation="Vertical">
+                <TextBlock Text="Hours" />
+                <TextBox Text="{Binding Hours, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+
+            <StackPanel
+                Margin="5,5,5,10"
+                HorizontalAlignment="Center"
+                Orientation="Horizontal">
+
+                <Button
+                    MinWidth="50"
+                    Margin="0,0,5,0"
+                    Padding="5,0"
+                    Command="{s:Action Submit}"
+                    Content="{Binding ButtonName, UpdateSourceTrigger=PropertyChanged, FallbackValue=Add}" />
+
+                <Button
+                    Margin="5,0,0,0"
+                    Padding="5,0"
+                    Command="{s:Action Close}"
+                    Content="Close" />
+            </StackPanel>
         </StackPanel>
     </Grid>
 </UserControl>

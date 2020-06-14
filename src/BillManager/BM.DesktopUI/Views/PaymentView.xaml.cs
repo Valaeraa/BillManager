@@ -24,30 +24,5 @@ namespace BM.DesktopUI.Views
         {
             InitializeComponent();
         }
-
-        private void ClientDropDown_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void DateDropDown_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void NewButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void SubmitForm_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ClearForm_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
