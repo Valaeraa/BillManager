@@ -12,12 +12,12 @@ namespace BM.Library.DataAccess
     {
         private const string _connectionString = "DefaultConnection";
 
-        public List<WorkModel> GetWorkData()
+        public List<WorkModel> GetWorkData(int clientId)
         {
             var sqlString = "select * from Work where ClientId = @ClientId";
 
             var sql = new SqlDataAccess();
-            var output = sql.LoadData<WorkModel, dynamic>(sqlString, new { }, _connectionString);
+            var output = sql.LoadData<WorkModel, dynamic>(sqlString, new { ClientId = clientId }, _connectionString);
 
             return output;
         }

@@ -5,7 +5,7 @@ namespace BM.Library.DataAccess
 {
     public interface IWorkData
     {
-        List<WorkModel> GetWorkData();
+        List<WorkModel> GetWorkData(int clientId);
         void InsertWorkData(WorkModel parameters);
         void UpdateWorkData(WorkModel parameters);
     }
