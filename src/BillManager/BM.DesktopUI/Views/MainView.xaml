@@ -4,6 +4,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:BM.DesktopUI.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:s="https://github.com/canton7/Stylet"
     d:DesignHeight="450"
     d:DesignWidth="800"
     Background="White"
@@ -23,8 +24,8 @@
         <!--  Row 0  -->
         <TextBlock
             Grid.Row="0"
-            FontSize="28"
             HorizontalAlignment="Center"
+            FontSize="28"
             Text="Time Entry" />
 
         <!--  Row 1  -->
@@ -32,8 +33,14 @@
             Grid.Row="1"
             Margin="5,5,5,10"
             Orientation="Vertical">
+
             <TextBlock Text="Client" />
-            <ComboBox x:Name="ClientDropDown" />
+
+            <ComboBox
+                DisplayMemberPath="Name"
+                ItemsSource="{Binding Clients}"
+                SelectedItem="{Binding SelectedClient}"
+                SelectedValuePath="Id" />
         </StackPanel>
 
         <!--  Row 2  -->
@@ -41,19 +48,22 @@
             Grid.Row="2"
             Margin="5,5,5,10"
             Orientation="Horizontal">
+
             <StackPanel
                 Margin="0,0,20,0"
                 Orientation="Vertical">
+
                 <TextBlock Text="Hours" />
-                <TextBox x:Name="HoursTextbox"
-                    MinWidth="100" />
+                <TextBox
+                    MinWidth="100"
+                    Text="{Binding Hours, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
 
-            <Button x:Name="OperateTime"
+            <Button
                 Padding="15,0"
-                Background="DeepSkyBlue"
-                Click="OperateTime_Click"
-                Content="Start Timer"
+                Background="{Binding TimerColor, UpdateSourceTrigger=PropertyChanged, FallbackValue=DeepSkyBlue}"
+                Command="{s:Action Timer}"
+                Content="{Binding TimerText, UpdateSourceTrigger=PropertyChanged, FallbackValue=Start Timer}"
                 Foreground="White" />
         </StackPanel>
 
@@ -62,8 +72,9 @@
             Grid.Row="3"
             Margin="5,5,5,10"
             Orientation="Vertical">
+
             <TextBlock Text="Title" />
-            <TextBox x:Name="TitleTextbox" />
+            <TextBox Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
 
         <!--  Row 4  -->
@@ -71,19 +82,21 @@
             Grid.Row="4"
             Margin="5,5,5,10"
             Orientation="Vertical">
+
             <TextBlock Text="Description" />
-            <TextBox x:Name="DescriptionTextbox"
+            <TextBox
                 Height="80"
                 AcceptsReturn="True"
+                Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
                 TextWrapping="Wrap" />
         </StackPanel>
 
         <!--  Row 5  -->
-        <Button x:Name="SubmitForm"
+        <Button
             Grid.Row="5"
             Margin="5,5,5,10"
             Padding="0,20"
-            Click="SubmitForm_Click"
+            Command="{s:Action Submit}"
             Content="Submit" />
     </Grid>
 </UserControl>
